@@ -1,0 +1,120 @@
+{% extends "navigation.html" %}
+{% load static %}
+{% load cms_tags %}
+{% block content %}
+<div class="main_container" style="max-width: 1300px; margin: auto; margin-top: 100px; margin-bottom: 400px; padding: 0px 10px;">
+
+    <div class="sub_main_container" style="    display: flex;width: 100%;">
+    <div class="side_left" style="width: 20%;">
+<div class="card_sub_main">
+<div class="card_inner">
+<img id="profile_pic"  src="{{ model.profile_photo.url }}">
+
+<div class="case_evidence" style="width: 100%;">
+<div class="social_accounts" style="background-color: rgba(39, 38, 38, 0.538);width: 100%;">
+  <h3 style="width: 100%; text-align: center;color: #FE4185;">Follow her on</h3>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="side_right"style="width: 50%;">
+    <div class="breadcrumb"><a href="/">Home</a> &nbsp;&nbsp;/&nbsp;&nbsp;<a href="/">{{ model.state }}</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="/">{{ model.Username }}</a></div>
+<div class="model_profile_data" >
+    <div>
+    <p style="width: 100%; font-size: 14px;opacity: 0.9;
+    color: #FFF;
+font-family: Montserrat;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: 44px;">{{ model.first_name|title }}&nbsp;{{ model.last_name }}</p>
+<br>
+    <p style="width: 100%;font-size: 13px;opacity: 0.6;">{{ model.approx_followers|title }} Followers</p>
+    </div>
+
+    <br>
+    
+    <a href="#"  style="display: flex;
+    padding: 18px 9px;
+    align-items: center;
+    gap: 7px;
+    border-radius: 30px;
+    justify-content: center;
+    border: 1px solid #FFF;
+    background: #FFF;
+    width: 180px;
+    height: 24px;
+    color: #111;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;text-decoration: none; ">
+    <img style="width: 18px;filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(7454%) hue-rotate(326deg) brightness(98%) contrast(96%);" class="img-top" src="{% static 'images/love.svg' %}" alt="Card Front" style="filter: none !important;">&nbsp; Add Favorite
+    </a>
+
+
+    <p style="width: 100%;opacity: 0.6;">{% if model.description %}{{ model.description }}{% else %}{% static_placeholder "description" %}{% endif %}</p>
+    <br>
+    <p style="width: 80%;font-size: 13px;opacity: 0.6;">spythemall is the best site to search Influencers, Model or you can even search Newly famous Instagram reel creates. You can also find Girl next door on spythemall website.</p>
+    </div>
+
+    <div class="share_section" style="
+    background-image: url(static/images/Section_Share.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: flex-start;">
+    <div id="share" style="display: flex; gap: 15px;margin-top: 25px;align-items: center;">
+        <div><p style="font-size: 14px; color: #FE4185;">Share this Profile </p><p style="text-align: center;">With your friends</p></div>
+    
+      <!-- facebook -->
+      <a class="facebook" href="https://www.facebook.com/share.php?u={{url}}&title={{title}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/Discord.svg' %}"></a>
+    
+      <!-- twitter -->
+      <a class="twitter" href="https://twitter.com/intent/tweet?status={{title}}+{{url}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/twitter.svg' %}"></a>
+    
+      <!-- google plus -->
+      <a class="googleplus" href="https://plus.google.com/share?url={{url}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/reddit.svg' %}"></a>
+    
+      <!-- linkedin -->
+      <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{title}}&source={{source}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/insta.svg' %}"></a>
+      
+      <!-- pinterest -->
+      <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media={{media}}&url={{url}}&is_video=false&description={{title}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/telegram.svg' %}"></a>
+      <button style="background-color: #FFFFFF; color: #272727;display: inline-flex;
+      justify-content: flex-end;
+    border-radius: 47px;
+    border: 1px solid #FFF;
+    background: #FFF;font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    align-items: center;
+        padding: 5px 23px 5px 28px;">Share&nbsp;<img style="background-color: transparent;width: 14px;" src="{% static '/images/share.svg' %}"></button>
+    </div>
+    </div>
+
+
+</div>
+
+<div class="Info_div" style="width: 30%;    display: flex;gap: 10px;    flex-direction: column;">
+    <span> <p style="width: 100%;opacity: 0.6;">Username</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.Username }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">Age</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.age }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">Figure</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.bodyshape }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">Weight</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.weight }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">Date of birth</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.date_of_birth }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">marital status</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.marital_status }}</p></span>
+    <!-- <span> <p style="width: 100%;opacity: 0.6;">Tags</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.Username }}</p></span> -->
+    <span> <p style="width: 100%;opacity: 0.6;">Email</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.email }}</p></span>
+    <span> <p style="width: 100%;opacity: 0.6;">City</p>&nbsp;&nbsp;<p style="width: 100%;">{{ model.city }}</p></span>
+</div>
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,578 @@
+{% extends "navigation.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<title>{% block title %}SpyThemAll{% endblock %}</title>
+<body>
+{% block content %}
+
+<div class="main_container" style="max-width: 1450px; margin: auto; margin-top: 100px; margin-bottom: 400px; padding: 0px 10px;">
+  
+
+<div class="progress_position">
+  <h2 style="color: #FF7CAB;font-size: 22px;font-weight: 600;">Trending</h2><br>
+  <div class="progress-container">
+    <div class="progress-bar progress-moved" id="myBar"></div>
+  </div>
+</div>
+  <div class="container_model">
+          <div class="card-main" style="color: white;display: flex;overflow: hidden; max-width: 1400px;margin-bottom: 30px; ">
+            
+            {% for details in model %}
+            <div class="card_sub_main" onclick="window.location.href='{% url 'profile' details.id %}'">
+            <div class="card_inner">
+            <img id="profile_pic"  src="{{ details.profile_photo.url }}">
+            
+            <div class="case_evidence" >
+            <div class="social_accounts" style="background-color: rgba(255, 255, 255, 0.10);">
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+              <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+            </div>
+            </div>
+          </div>
+
+            <div class="case_info_card" >
+            <div>
+            <p style="background-color: #2A2C31;width: 100%; font-size: 14px;opacity: 0.9;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+            <p style="background-color: #2A2C31;width: 100%;font-size: 11px;opacity: 0.6;">{{ details.state }}</p>
+          </div>
+
+            <a href="#" id="Favourite_icon" class="bloc-icon" style="">
+              <img style="width: 30px;filter: invert(51%) sepia(0%) saturate(10%) hue-rotate(164deg) brightness(98%) contrast(92%);" alt="Card Back" src="{% static 'images/love.svg' %}">
+        <img style="width: 50px;" class="img-top" src="{% static 'images/love.png' %}" alt="Card Front" style="filter: none !important;">
+            </a>
+          </div>
+          
+            
+          </div>
+          {% endfor %}
+          
+        </div>
+        <div>
+          <div class="carousel_btns">
+            <button id="right" onclick="ScrollRight()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/right.svg' %}"></button>
+            <button id="left" onclick="ScrollLeft()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/left.svg' %}"></button>
+          </div>
+        </div>
+        
+        
+    </div>
+    <div class="container_grid" width="100%">
+      <main class="grid">
+        <article>
+          
+          <h1>Sponsored</h1>
+          <div class="article_content">
+          {% for details in model|slice:":4" %}
+          <div class="article_subcontent">
+          <img class="profile_img" width="50%" src="{{ details.profile_photo.url }}" alt="Sample photo">
+          <div class="text">
+            <p style="width: 100%; font-size: 13px;opacity: 0.9;margin-bottom: 4px;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+            <p style="width: 100%;font-size: 11px;opacity: 0.6;margin-bottom: 8px;">{{ details.state }}</p>
+            
+            <div class="social_accounts" >
+              <div style="    padding: 6px 10px;
+              margin-bottom: 5px;
+              border-radius: 0px 4px 4px 0px;
+              background-color: rgba(255, 255, 255, 0.10);margin-bottom: 5px;background-color: rgba(255, 255, 255, 0.10);">
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+              <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+            </div>
+              <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;padding-right: 8px;    padding-bottom: 0px;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+            </div>
+          </div>
+         
+        </div>
+          {% endfor %}
+          <div class="view_more_btn">View more &nbsp;></div>
+        </div>
+        
+        </article>
+        <article>
+          <h1>Most Popular</h1>
+          <div class="article_content">
+            {% for details in model|slice:":4" %}
+            <div class="article_subcontent">
+            <img class="profile_img" width="50%" src="{{ details.profile_photo.url }}" alt="Sample photo">
+            <div class="text">
+              <p style="width: 100%; font-size: 13px;opacity: 0.9;margin-bottom: 4px;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+              <p style="width: 100%;font-size: 11px;opacity: 0.6;margin-bottom: 8px;">{{ details.state }}</p>
+              
+              <div class="social_accounts" >
+                <div style="    padding: 6px 10px;
+                margin-bottom: 5px;
+                border-radius: 0px 4px 4px 0px;
+                background-color: rgba(255, 255, 255, 0.10);margin-bottom: 5px;background-color: rgba(255, 255, 255, 0.10);">
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+              </div>
+                <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;padding-right: 8px;    padding-bottom: 0px;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+              </div>
+            </div>
+           
+          </div>
+            {% endfor %}
+            <div class="view_more_btn">View more &nbsp;></div>
+          </div>
+        </article>
+        <article>
+          <h1>Most Favourite</h1>
+          <div class="article_content">
+            {% for details in model|slice:":4" %}
+            <div class="article_subcontent">
+            <img class="profile_img" width="50%" src="{{ details.profile_photo.url }}" alt="Sample photo">
+            <div class="text">
+              <p style="width: 100%; font-size: 13px;opacity: 0.9;margin-bottom: 4px;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+              <p style="width: 100%;font-size: 11px;opacity: 0.6;margin-bottom: 8px;">{{ details.state }}</p>
+              
+              <div class="social_accounts" >
+                <div style="    padding: 6px 10px;
+                margin-bottom: 5px;
+                border-radius: 0px 4px 4px 0px;
+                background-color: rgba(255, 255, 255, 0.10);margin-bottom: 5px;background-color: rgba(255, 255, 255, 0.10);">
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+              </div>
+                <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;padding-right: 8px;    padding-bottom: 0px;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+              </div>
+            </div>
+           
+          </div>
+            {% endfor %}
+            <div class="view_more_btn">View more &nbsp;></div>
+          </div>
+        </article>
+        <article>
+          <h1>Newly added</h1>
+          <div class="article_content">
+            {% for details in model|slice:":4" %}
+            <div class="article_subcontent">
+            <img class="profile_img" width="50%" src="{{ details.profile_photo.url }}" alt="Sample photo">
+            <div class="text">
+              <p style="width: 100%; font-size: 13px;opacity: 0.9;margin-bottom: 4px;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+              <p style="width: 100%;font-size: 11px;opacity: 0.6;margin-bottom: 8px;">{{ details.state }}</p>
+              
+              <div class="social_accounts" >
+                <div style="    padding: 6px 10px;
+                margin-bottom: 5px;
+                border-radius: 0px 4px 4px 0px;
+                background-color: rgba(255, 255, 255, 0.10);margin-bottom: 5px;background-color: rgba(255, 255, 255, 0.10);">
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+                <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+              </div>
+                <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;padding-right: 8px;    padding-bottom: 0px;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+              </div>
+            </div>
+           
+          </div>
+            {% endfor %}
+            <div class="view_more_btn">View more &nbsp;></div>
+          </div>
+        </article>
+        
+      </main>
+    </div>
+
+    <!-- share start -->
+<div class="share_section" style="
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;">
+<div id="share" style="display: flex; gap: 15px;margin-top: 25px;align-items: center;">
+
+  <!-- facebook -->
+  <a class="facebook" href="https://www.facebook.com/share.php?u={{url}}&title={{title}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/Discord.svg' %}"></a>
+
+  <!-- twitter -->
+  <a class="twitter" href="https://twitter.com/intent/tweet?status={{title}}+{{url}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/twitter.svg' %}"></a>
+
+  <!-- google plus -->
+  <a class="googleplus" href="https://plus.google.com/share?url={{url}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/reddit.svg' %}"></a>
+
+  <!-- linkedin -->
+  <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{title}}&source={{source}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/insta.svg' %}"></a>
+  
+  <!-- pinterest -->
+  <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media={{media}}&url={{url}}&is_video=false&description={{title}}" target="blank"><img style="background-color: transparent;width: 24px;" src="{% static '/images/telegram.svg' %}"></a>
+  <button style="background-color: #FFFFFF; color: #272727;display: inline-flex;
+  justify-content: flex-end;
+border-radius: 47px;
+border: 1px solid #FFF;
+background: #FFF;font-size: 16px;
+font-style: normal;
+font-weight: 500;
+align-items: center;
+    padding: 5px 23px 5px 28px;">Share&nbsp;<img style="background-color: transparent;width: 14px;" src="{% static '/images/share.svg' %}"></button>
+</div>
+</div>
+<!-- Share end -->
+
+<br>
+
+<div class="progress_position">
+  <h2 style="color: #FF7CAB;font-size: 22px;font-weight: 600;">Suggestions based on your choice</h2><br>
+  <div class="progress-container">
+    <div class="progress-bar progress-moved" id="myBar1"></div>
+  </div>
+</div>
+<div class="container_model">
+  <div class="card-main1" style="color: white;display: flex;overflow: hidden; max-width: 1400px;">
+    
+    {% for details in model %}
+    <div class="card_sub_main" onclick="window.location.href='{% url 'profile' details.id %}'">
+    <div class="card_inner">
+    <img id="profile_pic" src="{{ details.profile_photo.url }}">
+    <div class="case_evidence">
+    <div class="social_accounts" style="background-color: rgba(255, 255, 255, 0.10);">
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+      <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+    </div>
+    </div>
+  </div>
+    <!-- <h1>{{ details.profile_photo }}</h1> -->
+    <div class="case_info_card">
+    
+    <p style="background-color: #2A2C31;width: 100%; font-size: 14px;opacity: 0.9;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+    <p style="background-color: #2A2C31;width: 100%;font-size: 11px;opacity: 0.6;">{{ details.state }}</p>
+  </div>
+  
+    
+  </div>
+  {% endfor %}
+  
+</div>
+<div>
+  <div class="carousel_btns">
+    <button id="right" onclick="ScrollRight1()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/right.svg' %}"></button>
+    <button id="left" onclick="ScrollLeft1()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/left.svg' %}"></button>
+  </div>
+</div>
+
+
+</div>
+<!-- First carousel end -->
+
+<br>
+
+<div class="progress_position">
+  <h2 style="color: #FF7CAB;font-size: 22px;font-weight: 600;margin-top: 10px;">Specially for You</h2><br>
+  <div class="progress-container">
+    <div class="progress-bar progress-moved" id="myBar2"></div>
+  </div>
+</div>
+<div class="container_model">
+    
+  <div class="card-main2" style="color: white;display: flex;overflow: hidden; max-width: 1400px;">
+    
+    {% for details in model %}
+    <div class="card_sub_main" onclick="window.location.href='{% url 'profile' details.id %}'">
+    <div class="card_inner">
+    <img id="profile_pic" src="{{ details.profile_photo.url }}">
+    <div class="case_evidence" style="float: left;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 10;
+    background-color: transparent;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;">
+    <div class="social_accounts" style="background-color: rgba(255, 255, 255, 0.10);">
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+      <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+    </div>
+    </div>
+  </div>
+    <!-- <h1>{{ details.profile_photo }}</h1> -->
+    <div class="case_info_card">
+    
+    <p style="background-color: #2A2C31;width: 100%; font-size: 14px;opacity: 0.9;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+    <p style="background-color: #2A2C31;width: 100%;font-size: 11px;opacity: 0.6;">{{ details.state }}</p>
+  </div>
+  
+    
+  </div>
+  {% endfor %}
+  
+</div>
+<div>
+  <div class="carousel_btns">
+    <button id="right" onclick="ScrollRight2()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/right.svg' %}"></button>
+    <button id="left" onclick="ScrollLeft2()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/left.svg' %}"></button>
+  </div>
+</div>
+
+
+</div>
+<!-- Second container end -->
+
+<br>
+<div class="progress_position">
+  <h2 style="color: #FF7CAB;font-size: 22px;font-weight: 600;margin-top: 10px;">Personalized Picks</h2><br>
+  <div class="progress-container">
+    <div class="progress-bar progress-moved" id="myBar3"></div>
+  </div>
+</div>
+<div class="container_model">
+    
+  <div class="card-main3" style="color: white;display: flex;overflow: hidden; max-width: 1400px;">
+    
+    {% for details in model %}
+    <div class="card_sub_main" onclick="window.location.href='{% url 'profile' details.id %}'">
+    <div class="card_inner">
+    <img id="profile_pic" src="{{ details.profile_photo.url }}">
+    <div class="case_evidence">
+    <div class="social_accounts" style="background-color: rgba(255, 255, 255, 0.10);">
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+      <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+    </div>
+    </div>
+  </div>
+    <!-- <h1>{{ details.profile_photo }}</h1> -->
+    <div class="case_info_card">
+    
+    <p style="background-color: #2A2C31;width: 100%; font-size: 14px;opacity: 0.9;font-weight: 500;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+    <p style="background-color: #2A2C31;width: 100%;font-size: 11px;opacity: 0.6;font-weight: 400;">{{ details.state }}</p>
+  </div>
+  
+    
+  </div>
+  {% endfor %}
+  
+</div>
+<div>
+  <div class="carousel_btns">
+    <button id="right" onclick="ScrollRight3()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/right.svg' %}"></button>
+    <button id="left" onclick="ScrollLeft3()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/left.svg' %}"></button>
+  </div>
+</div>
+
+
+</div>
+
+<!-- Third carousel end -->
+
+<!-- Forum Carousel start-->
+<br>
+<br>
+
+<div class="forum_carousel_container" >
+<div class="forum_carousel_section" style="
+    padding: 37px 20px;
+    height: 675px;
+    width: 100%;
+    color: #ffffff;
+    background-image: url(static/images/frame.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;">
+   
+<div class="progress_position">
+  <div id="cases_btns" style="
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  font-size: 14px;
+  gap: 8px;
+  margin-left: 100px;
+  ">
+<a style="color: #FF7CAB;font-weight: 600;">Latest cases</a>&nbsp;&nbsp;
+<a style="color: #FF7CAB;font-weight: 600;">Top cases</a>
+</div>
+  <div class="progress-container">
+    <div class="progress-bar progress-moved" id="myBar4"></div>
+  </div>
+  
+</div>
+<div class="container_model">
+    
+  <div class="card-main4" style="color: white;display: flex;overflow: hidden; max-width: 1400px;padding-left: 100px;padding-right: 250px;">
+    
+    {% for details in model %}
+    <div class="card_sub_main_forum" style="" onclick="window.location.href='{% url 'profile' details.id %}'">
+    <div class="profile_container">
+    <img id="profile_pic" style="width: 40px;
+    height: 40px;
+    border-radius: 50%;" src="{% static '/images/luffy.jpg' %}">
+    </div>
+    <div class="profile_card_container">
+    <div class="card_inner">
+    <img id="profile_pic" src="{{ details.profile_photo.url }}">
+    <div class="case_evidence" style="float: left;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 10;
+    background-color: transparent;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;">
+    <div class="social_accounts" style="background-color: rgba(255, 255, 255, 0.10);">
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/insta.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/onlyfans.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/twitter.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/youtube.svg' %}"></a>
+      <a href="#" ><img style="background-color: transparent;width: 14px;" src="{% static '/images/snapchat.svg' %}"></a>
+      <a href="#" class="btn" style="color: white;background-color: #62616A !important;font-size: 12px;align-items: flex-start;"><img style="padding-bottom: 4px;background-color: transparent;width: 14px;" src="{% static '/images/female_icon.svg' %}">&nbsp;{{details.age}}</a>
+    </div>
+    </div>
+  </div>
+    <!-- <h1>{{ details.profile_photo }}</h1> -->
+    <div class="case_info_card">
+    
+    <p style="background-color: #2A2C31;width: 100%; font-size: 14px;opacity: 0.9;">{{ details.first_name|title }}&nbsp;{{ details.last_name }}</p>
+    <p style="background-color: #2A2C31;width: 100%;font-size: 11px;opacity: 0.6;">{{ details.state }}</p>
+  </div>
+  
+</div>
+  </div>
+  {% endfor %}
+  
+</div>
+<div>
+  <div class="carousel_btns">
+    <button id="right" onclick="ScrollRight4()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/right.svg' %}"></button>
+    <button id="left" onclick="ScrollLeft4()"><img style="background-color: transparent;width: 14px;" src="{% static '/images/left.svg' %}"></button>
+  </div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+<section>
+  <div class="main_gridcontainer">
+    <ul class="gridwrapper">
+      <button class="state_btns" style="background-image: url(static/images/states/h.svg);">Himachal Pradesh</button>
+      <button class="state_btns" style="background-image: url(static/images/states/p.svg);">Punjab</button>
+      <button class="state_btns" style="background-image: url(static/images/states/m.svg);">Maharashtra</button>
+      <button class="state_btns" style="background-image: url(static/images/states/u.svg);">Uttarakhand</button>
+      <button class="state_btns" style="background-image: url(static/images/states/u.svg);">Uttar Pradesh</button>
+      <button class="state_btns" style="background-image: url(static/images/states/h.svg);">Haryana</button>
+      <button class="state_btns" style="background-image: url(static/images/states/k.svg);">Karnataka</button>
+      <button class="state_btns" style="background-image: url(static/images/states/d.svg);">Delhi</button>
+      <button class="state_btns" style="background-image: url(static/images/states/a.svg);">Assam</button>
+      <button class="state_btns" style="background-image: url(static/images/states/a.svg);">Andhra Pradesh</button>
+      <button class="state_btns"style="background-image: url(static/images/states/g.svg);">Goa</button>
+      <button class="state_btns"style="background-image: url(static/images/states/w.svg);">West Bengal</button>
+      <button class="state_btns"style="background-image: url(static/images/states/k.svg);">Kerala</button>
+      <button class="state_btns" style="background-image: url(static/images/states/t.svg);">Telangana</button>
+      <button class="state_btns"style="background-image: url(static/images/states/b.svg);">Bihar</button>
+      <button class="state_btns"style="background-image: url(static/images/states/m.svg);">Manipur</button>
+      <button class="state_btns"style="background-image: url(static/images/states/c.svg);">Chhattisgarh</button>
+      <button class="state_btns"style="background-image: url(static/images/states/g.svg);">Gujarat</button>
+      <button class="state_btns"style="background-image: url(static/images/states/j.svg);">Jharkhand</button>
+      <button class="state_btns"style="background-image: url(static/images/states/m.svg);">Meghalaya</button>
+      <button class="state_btns"style="background-image: url(static/images/states/n.svg);">Nagaland</button>
+      <button class="state_btns"style="background-image: url(static/images/states/m.svg);">Mizoram</button>
+      <button class="state_btns"style="background-image: url(static/images/states/o.svg);">Odisha</button>
+      <button class="state_btns"style="background-image: url(static/images/states/r.svg);">Rajasthan</button>
+      <button class="state_btns"style="background-image: url(static/images/states/s.svg);">Sikkim</button>
+      <button class="state_btns"style="background-image: url(static/images/states/m.svg);">Madhya Pradesh</button>
+      <button class="state_btns"style="background-image: url(static/images/states/t.svg);">Tamil Nadu</button>
+      <button class="state_btns"style="background-image: url(static/images/states/a.svg);">Arunachal Pradesh</button>
+      <button class="state_btns"style="background-image: url(static/images/states/t.svg);">Tripura</button>
+      
+    </ul>
+  </div>
+</section>
+
+<!-- Main container end -->
+</div>
+    <script>
+
+let scrEl = document.querySelector(".card-main")
+scrEl.addEventListener('scroll', event => {
+  let scrolled = (scrEl.scrollLeft / (scrEl.scrollWidth - scrEl.clientWidth) ) * 100
+  document.querySelector("#myBar").style.width = scrolled + "%"
+});
+
+
+let scrEl1 = document.querySelector(".card-main1")
+scrEl1.addEventListener('scroll', event => {
+  let scrolled = (scrEl1.scrollLeft / (scrEl1.scrollWidth - scrEl1.clientWidth) ) * 100
+  document.querySelector("#myBar1").style.width = scrolled + "%"
+});
+
+
+let scrEl2 = document.querySelector(".card-main2")
+scrEl2.addEventListener('scroll', event => {
+  let scrolled = (scrEl2.scrollLeft / (scrEl2.scrollWidth - scrEl2.clientWidth) ) * 100
+  document.querySelector("#myBar2").style.width = scrolled + "%"
+});
+
+
+let scrEl3 = document.querySelector(".card-main3")
+scrEl3.addEventListener('scroll', event => {
+  let scrolled = (scrEl3.scrollLeft / (scrEl3.scrollWidth - scrEl3.clientWidth) ) * 100
+  document.querySelector("#myBar3").style.width = scrolled + "%"
+});
+
+let scrEl4 = document.querySelector(".card-main4")
+scrEl4.addEventListener('scroll', event => {
+  let scrolled = (scrEl4.scrollLeft / (scrEl4.scrollWidth - scrEl4.clientWidth) ) * 100
+  document.querySelector("#myBar4").style.width = scrolled + "%"
+});
+      
+    
+document.querySelector('.button').onmousemove = function (e) {
+
+var x = e.pageX - e.target.offsetLeft;
+var y = e.pageY - e.target.offsetTop;
+
+e.target.style.setProperty('--x', x + 'px');
+e.target.style.setProperty('--y', y + 'px');
+};
+
+
+
+    </script>
+<style>
+  .card-main{
+    scroll-behavior: smooth;
+  }
+  
+</style>
+</body>
+{% endblock %}
+
+</html>
