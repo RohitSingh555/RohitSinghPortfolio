@@ -1754,6 +1754,10 @@ hr{float:none;clear:both;border:none;border-top:1px solid #eee; margin:20px 0px;
   .navbar-toggler img{
     filter: invert(30%) sepia(14%) saturate(1801%) hue-rotate(224deg) brightness(95%) contrast(82%);
   }
+
+	.navbar-expand-lg{
+    justify-content: space-between !important;
+  }
 }
 
 .bigcardis{
