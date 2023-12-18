@@ -253,21 +253,25 @@ $(document).ready(function() {
     }, 2000);
   }
 
+  // Automatically skip after 1 second
+  setTimeout(function() {
+    completeLoading();
+  }, 1000);
+
   // Users can skip the loading process if they want.
   $('.skip').click(function() {
     completeLoading();
   });
-  
-  // Will wait for everything on the page to load.
-  $(window).bind('load', function() {
-    completeLoading();
+
+  // Ensure completeLoading is called even if the page is not fully ready after 1 second
+  $(window).on('load', function() {
+    setTimeout(function() {
+      completeLoading();
+    }, 1000);
   });
-  
-  // Will remove overlay after 1 min for users cannot load properly.
-  setTimeout(function() {
-    completeLoading();
-  }, 60000);
 });
+
+  
 
 
 
