@@ -1,0 +1,235 @@
+p{
+  font-size: 13px;
+}
+
+.login_div{
+  display: flex;
+  gap: 23px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  background-color: #9293973b;
+  margin-top: 136px;
+  align-content: center;
+  max-width: 500px;
+  padding: 26px;
+  border-radius: 15px;
+  height: fit-content;
+  flex-wrap: wrap;
+  align-items: center;
+  background-image: url(static/images/Section_Share.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  
+}
+
+.case_info_card{
+  background-color: #2A2C31;
+  display: flex;
+  width: 210px;
+  padding: 12px 8px 16px 8px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4px;
+  height: 70px;
+  border-radius: 0px 0px 10px 10px;
+  justify-content: space-between;
+}
+.card_inner #profile_pic,#profile_pic {
+  width: 210px;
+  height: 286px;
+  border-radius: 10px 10px 0px 0px;
+}
+.card_sub_main_forum{
+  margin-right: 16px;display: flex;border-radius: 11px; flex-direction: column;margin-bottom: 16px;width: 268px;
+    height: 500px;
+    padding: 20px;
+    justify-content:space-between;
+    background-color: #121315;
+}
+
+.card_inner {
+  width: 210px;
+  height: 286px;
+  position: relative;
+}
+.case_evidence {
+  float: left;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 10;
+  background-color: transparent;
+  padding: 5px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.carousel_btns{
+  padding-left: 22px;
+  padding-top: 49px;
+  padding-right: 10px;
+  display:flex;
+  flex-direction: column;
+}
+.container_model{
+  display: flex;
+
+}
+.carousel_btns button{
+  background-color: #272727;
+  border: none;
+  padding: 30px 13px;
+  margin-bottom: 17px;
+  border-radius: 4px;
+  font-size: 40px;
+}
+.card_sub_main{
+  margin-right: 16px;display: flex; flex-direction: column;margin-bottom: 16px;
+}
+.case_evidence{
+  float: left;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 10;
+    background-color: transparent;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#login_button {
+  font-size: 14px;
+  display: inline-flex;
+  padding: 3px 15.75px 3px 16px;
+  justify-content: center;
+  color: black;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #FFF;
+  background: #FFF;
+  margin-right: 20px;
+}
+#login_button:hover {
+  background-color: #FE4185;
+  border-color: #FE4185;
+  color: #FFF;
+}
+#Favourite_icon {
+  position: relative;
+  display: inline-block;
+}
+#Favourite_icon .img-top {
+  display: none;
+    position: absolute;
+    top: -9px;
+    left: -10px;
+    z-index: 2;
+}
+#Favourite_icon:hover .img-top {
+  display: inline;
+}
+.breadcrumb a{
+  color:#FE4185;
+  text-decoration: none;
+  font-size: 12px;
+}
+.breadcrumb a:hover{
+  color:white;
+  text-decoration: none;
+}
+.Info_div span{
+  display: flex;
+  gap: 25px;
+}
+/* Proper media queries */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+.navbar-nav me-auto mb-2 mb-lg-0{
+  display: none;
+}
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+  #footer_logo {
+    margin: 0px !important;
+    margin-right: 8px !important;
+}
+.main_login_btn{
+  display: none !important;
+}
+#Navbtns{
+  display: none;
+}
+.card-main3,.card-main2,.card-main1,.card-main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.social_accounts a img{
+  width: 22px !important;
+  margin-right: 10px;
+}
+.card_inner #profile_pic,.card_inner{
+  width: 100%;height: 100%;
+}
+.case_info_card{
+  width: 100%;
+}
+.carousel_btns,.progress-container{
+  display: none;
+}
+.card_sub_main{
+  margin-right: 0px;
+}
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  #nav_search,#nav_img{
+    display: none !important;
+  }
+  .main_container{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .card-main4{
+    padding-left: 43px !important;
+    
+  }
+  #cases_btns{
+    margin-left: 20px !important;
+  }
+  #navbar_optn{
+    display: none !important;
+  }
+  #nav_search{
+    width: 40% !important;
+  }
+  #nav_img{
+    width: 28px !important;
+  }
+.navbar-nav>li>a{
+  padding: 0px !important;
+}
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+  body{
+    width: 100%;
+  }
+
+  .share_section{
+    background-size: cover !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }
+    
+  .dark_light_mode{
+    display: none !important;
+  }
+}
