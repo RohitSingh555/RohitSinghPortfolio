@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowDown, ArrowUpRight, Terminal, FileText, MapPin, Phone, Mail, Sparkles } from 'lucide-react';
 import { ThreeScene } from './ThreeScene';
 import { ScrollReveal } from './ScrollReveal';
 
 export const Hero: React.FC = () => {
+  const [isDesktop, setIsDesktop] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1024;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const scrollTo = (targetId: string) => {
     const element = document.getElementById(targetId);
     if (element) {
@@ -118,19 +133,21 @@ export const Hero: React.FC = () => {
             </ScrollReveal>
           </div>
 
-          {/* Right Column: 3D Architectural Sculpture Canvas (5 cols) */}
-          <div className="lg:col-span-5 relative flex items-center justify-center mt-2 lg:mt-0">
-            <ScrollReveal direction="none" delay={200} className="w-full flex justify-center">
-              <div className="w-full max-w-[420px] sm:max-w-[480px] h-[280px] sm:h-[400px] lg:h-[520px] relative overflow-hidden">
-                <ThreeScene />
+          {/* Right Column: 3D Architectural Sculpture Canvas (5 cols) - Desktop only */}
+          <div className="hidden lg:flex lg:col-span-5 relative items-center justify-center">
+            {isDesktop && (
+              <ScrollReveal direction="none" delay={200} className="w-full flex justify-center">
+                <div className="w-full max-w-[420px] sm:max-w-[480px] h-[400px] lg:h-[520px] relative overflow-hidden">
+                  <ThreeScene />
 
-                {/* Minimal caption badge below sculpture */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-subtle text-[10px] sm:text-[11px] font-mono text-graphite-500 whitespace-nowrap pointer-events-none flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-                  <span>Kinetic Systems Core · Drag to Orbit</span>
+                  {/* Minimal caption badge below sculpture */}
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-subtle text-[10px] sm:text-[11px] font-mono text-graphite-500 whitespace-nowrap pointer-events-none flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
+                    <span>Kinetic Systems Core · Drag to Orbit</span>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            )}
           </div>
 
         </div>
