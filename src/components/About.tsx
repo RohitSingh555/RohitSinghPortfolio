@@ -34,12 +34,17 @@ export const About: React.FC = () => {
                 <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-slate-200 to-slate-100 -z-10 group-hover:scale-[1.02] transition-transform duration-300" />
 
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-                  <img
-                    src="./assets/img/rohit.jpg"
-                    alt="Rohit Singh - Software Development Engineer"
-                    className="w-full h-auto object-cover object-top aspect-[4/5] grayscale contrast-105 hover:grayscale-0 transition-all duration-500"
-                    loading="lazy"
-                  />
+                  <div className="relative overflow-hidden bg-slate-950 aspect-[4/5]">
+                    <img
+                      src="./assets/img/rohit.jpg"
+                      alt="Rohit Singh - Software Development Engineer"
+                      className="w-full h-full object-cover object-top filter grayscale contrast-110 hover:grayscale-0 transition-all duration-700 ease-out"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white/80 pointer-events-none">
+                      Editorial Monochrome
+                    </div>
+                  </div>
                   <div className="p-3.5 sm:p-4 bg-white border-t border-slate-100 flex items-center justify-between text-xs font-mono text-graphite-600">
                     <span className="font-semibold text-graphite-900">Rohit Singh</span>
                     <span className="text-accent-blue font-mono">Nagpur, Maharashtra</span>

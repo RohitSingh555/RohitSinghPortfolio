@@ -148,13 +148,13 @@ export const Navbar: React.FC = () => {
         {/* Right CTA Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           <a
-            href="./assets/img/My resume 2023.pdf"
+            href="./assets/Rohit_Singh_CV.pdf"
             target="_blank"
             rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-graphite-700 hover:text-graphite-950 hover:bg-slate-100 transition-colors"
           >
             <FileText className="w-3.5 h-3.5 text-accent-blue" />
-            <span>Resume</span>
+            <span>CV</span>
             <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
 
@@ -209,14 +209,14 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-6 border-t border-slate-200 space-y-3">
             <a
-              href="./assets/img/My resume 2023.pdf"
+              href="./assets/Rohit_Singh_CV.pdf"
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 text-sm font-mono text-graphite-800 bg-slate-50 hover:bg-slate-100 active:scale-[0.99] transition-all"
             >
               <FileText className="w-4 h-4 text-accent-blue" />
-              <span>Download Verified Resume (PDF)</span>
+              <span>Download CV (PDF)</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
             </a>
 

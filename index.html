@@ -7,7 +7,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-KC8W0LKF8Y');
+    gtag('config', 'G-KC8W0LKF8Y', {
+      cookie_domain: window.location.hostname,
+      cookie_flags: 'SameSite=None;Secure'
+    });
   </script>
 
   <meta charset="UTF-8" />

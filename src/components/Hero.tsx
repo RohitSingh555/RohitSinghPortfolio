@@ -105,13 +105,13 @@ export const Hero: React.FC = () => {
                 </button>
 
                 <a
-                  href="./assets/img/My resume 2023.pdf"
+                  href="./assets/Rohit_Singh_CV.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-transparent hover:bg-slate-100 text-graphite-700 hover:text-graphite-950 text-sm font-medium transition-all"
                 >
                   <FileText className="w-4 h-4 text-accent-blue" />
-                  <span>Resume</span>
+                  <span>CV</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
                 </a>
               </div>

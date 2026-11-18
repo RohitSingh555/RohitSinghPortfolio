@@ -205,10 +205,10 @@ export const Contact: React.FC = () => {
               </a>
             </ScrollReveal>
 
-            {/* Resume Download */}
+            {/* CV Download */}
             <ScrollReveal direction="up" delay={350}>
               <a
-                href="./assets/img/My resume 2023.pdf"
+                href="./assets/Rohit_Singh_CV.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-white/20 transition-all flex items-center justify-between group"
@@ -218,8 +218,8 @@ export const Contact: React.FC = () => {
                     <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-white font-mono truncate">Curriculum Vitae (PDF)</h4>
-                    <p className="text-[11px] sm:text-xs text-graphite-400 font-sans truncate">Direct verified CV download</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-white font-mono truncate">Curriculum Vitae (CV)</h4>
+                    <p className="text-[11px] sm:text-xs text-graphite-400 font-sans truncate">Direct verified 2-page PDF download</p>
                   </div>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-graphite-500 group-hover:text-white transition-colors shrink-0 ml-2" />
